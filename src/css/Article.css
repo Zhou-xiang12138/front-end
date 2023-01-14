@@ -1,0 +1,18 @@
+.article-head {
+    margin: 30px;
+}
+
+.article-content {
+    margin: 10px;
+}
+
+
+.article-status {
+    color: grey;
+}
+
+.article-apply {
+    text-align: center;
+    width : 120px;
+    margin: auto;
+}

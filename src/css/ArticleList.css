@@ -1,0 +1,26 @@
+.button-list {
+    display: flex;
+    flex: 1 0 auto;
+    align-items:center;
+    margin:20px;
+}
+
+.button-list > button {
+    width:100px;
+    margin-right: 20px;
+}
+
+.button-list  > select {
+    margin-right: 20px;
+    width:200px
+}
+
+.list-search {
+    display: flex;
+    flex:1 0 auto;
+    margin: 30px;
+    margin-left: 0px;;
+}
+
+
+

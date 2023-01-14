@@ -1,0 +1,15 @@
+.button-list {
+    display: flex;
+    flex: 1 0 auto;
+    align-items:center;
+}
+
+.button-list .button-item {
+    margin-right: 20px;
+    width:200px
+}
+
+
+#deleteArticle {
+    margin-left:300px;
+}
