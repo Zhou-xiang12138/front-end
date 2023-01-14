@@ -13,10 +13,24 @@
 
    <button @click="this.submit_form" class="btn btn-success">提交 </button>
     </div>
+
+    <div class="col-md-10">
+        <ul class="list-group">
+          <li class="list-group-item"
+              v-for="(medicine, index) in recoomend_res "
+              v-bind:key="index"
+          >
+            {{ medicine.key }} :   {{ medicine.value }}
+          </li>
+        </ul>
+      </div>
+
      
+
   </template>
 
 <script>
+import RecommendService from "../services/RecommendService";
 
 export default {
     data() {
@@ -25,14 +39,49 @@ export default {
               keyword1: null,
               keyword2: null,
               keyword3: null
-            }
-          };
+            },
+            recoomend_res: []
+        };
     },
     methods: {
         submit_form() {
-        }
+            var d = "";
+            if (this.keywords.keyword1 != null && this.keywords.keyword1 != "") {
+                d = this.keywords.keyword1;
+            }
+            if (this.keywords.keyword2 != null && this.keywords.keyword2 != "") {
+                if (d != "") {
+                    d += ","
+                }
+                d += this.keywords.keyword2;
+            }
+            if (this.keywords.keyword3 != null && this.keywords.keyword3 != "") {
+                if (d != "") {
+                    d += ","
+                }
+                d += this.keywords.keyword3;
+            }
+            RecommendService.medicine(d)
+                .then(response => {
+                if (response.data != null) {
+                    var dd = response.data.data
+                    this.recoomend_res = []
+                    
+                    for (var key in dd) {
+
+                        this.recoomend_res.push({"key": key, "value": dd[key]})
+                    }
+                    console.log(this.recoomend_res)
+                }
+                })
+                .catch(e => {
+                console.log(e);
+                });
+      }
     },
     mounted() {
+
+
     }
 };
 
